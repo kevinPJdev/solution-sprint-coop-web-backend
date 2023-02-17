@@ -5,6 +5,11 @@ const getAllCompanies = (req, res) => {
     .then(companies => {
       return res.status(200).json(companies)
     })
+    .catch(err => {
+      return res.status(500).json({
+        msg: "Something went wrong"
+      })
+    })
 }
 
 const postCompany = (req, res) => {
