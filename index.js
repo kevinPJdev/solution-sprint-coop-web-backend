@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 const companyRoutes = require('./routes/companyRoute');
+const interviewRoutes = require('./routes/interviewRoute');
 
 const app = express()
 mongoose.set('strictQuery', false)
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api', companyRoutes)
+app.use('/api', interviewRoutes)
 
 mongoose.connect(
   `mongodb+srv://${username}:${[password]}@windsor-cluster.qufpjwv.mongodb.net/lancer_view_db?retryWrites=true&w=majority`, 
