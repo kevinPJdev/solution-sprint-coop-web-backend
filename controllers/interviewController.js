@@ -12,8 +12,8 @@ const getAllInterviews = (req, res) => {
     })
 }
 
-const getInterviewByCompanyId = (req, res) => {
-  Interview.findById({company_id: req.params.id}).sort({created_date: -1})
+const getInterviewsByCompanyId = (req, res) => {
+  Interview.find({company_id: req.params.id}).sort({created_date: -1})
     .then(interviews => {
       if(!interviews) {
         return res.status(400).json({
@@ -25,9 +25,9 @@ const getInterviewByCompanyId = (req, res) => {
     })
     .catch(err => {
       return res.status(500).json({
-        msg: "Something went wrong"
+        msg: "Something went wrong XXX"
       })
     })
 }
 
-module.exports = {getAllInterviews}
+module.exports = {getAllInterviews, getInterviewsByCompanyId}
