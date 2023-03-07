@@ -12,6 +12,18 @@ const getAllCompanies = (req, res) => {
     })
 }
 
+const getTopCompanies = (req, res) => {
+  Company.find().sort({ offer_count: -1 }).limit(8)
+    .then(companies => {
+      return res.status(200).json(companies)
+    })
+    .catch(err => {
+      return res.status(500).json({
+        msg: "Something went wrong"
+      })
+    })
+}
+
 const postCompany = (req, res) => {
   const {company_name, location, website, logo_image_url} = req.body
 
@@ -23,4 +35,4 @@ const postCompany = (req, res) => {
     })
 }
 
-module.exports = {getAllCompanies, postCompany}
+module.exports = {getAllCompanies, postCompany, getTopCompanies}
