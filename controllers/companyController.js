@@ -12,6 +12,24 @@ const getAllCompanies = (req, res) => {
     })
 }
 
+const getCompanyById = (req, res) => {
+  Company.findById(req.params.id)
+   .then(company => {
+      if(!company) {
+        return res.status(500).json({
+          msg: "No company with that id found"
+        })
+      } else {
+        return res.status(200).json(company)
+      }
+   })
+   .catch((err) => {
+      return res.status(500).json({
+        msg: "Something went wrong"
+      })
+   })
+}
+
 const getTopCompanies = (req, res) => {
   Company.find().sort({ offer_count: -1 }).limit(8)
     .then(companies => {
@@ -35,4 +53,4 @@ const postCompany = (req, res) => {
     })
 }
 
-module.exports = {getAllCompanies, postCompany, getTopCompanies}
+module.exports = {getAllCompanies, postCompany, getTopCompanies, getCompanyById}
