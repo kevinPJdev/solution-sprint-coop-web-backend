@@ -5,10 +5,12 @@ const ReviewSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  questions: [String]
+  pros: [String],
+  cons: [String]
 })
 
-const InterviewSchema = mongoose.Schema({
+
+const Critique = mongoose.Schema({
   user_id: String,
   company_id: {
     type: mongoose.Schema.Types.ObjectId,
@@ -22,19 +24,17 @@ const InterviewSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  interview_date: {
-    type: Date,
+  months_length: {
+    type: Number,
     required: true
   },
   review: {
     type: ReviewSchema,
     required: true
   },
-  positive_flag: {
-    type: Boolean,
-  },
-  job_offer_flag: Boolean,
-  difficulty_rating: Number,
+  likes: Number,
+  dislikes: Number,
+  rating: Number,
   created_date: {
     type: Date,
     default: Date.now()
@@ -43,7 +43,6 @@ const InterviewSchema = mongoose.Schema({
     type: Date,
     default: Date.now()
   }
-
 })
 
-module.exports = interview = mongoose.model('interview', InterviewSchema)
+module.exports = critique = mongoose.model('critique', Critique)
