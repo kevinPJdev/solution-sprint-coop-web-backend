@@ -17,6 +17,7 @@ const JobSchema = mongoose.Schema({
   },
   multiple_jobs_available: Boolean,
   category: String,
+  open_status: Boolean
 })
 
 module.exports = job = mongoose.model('job', JobSchema)
