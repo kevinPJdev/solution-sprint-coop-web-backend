@@ -1,33 +1,61 @@
-const Interview = require('../models/Interview')
+const Interview = require("../models/Interview");
 
 const getAllInterviews = (req, res) => {
   Interview.find()
-    .then(interviews => {
-      return res.status(200).json(interviews)
+    .then((interviews) => {
+      return res.status(200).json(interviews);
     })
-    .catch(err => {
+    .catch((err) => {
       return res.status(500).json({
-        msg: "Something went wrong"
-      })
-    })
-}
+        msg: "Something went wrong",
+      });
+    });
+};
 
 const getInterviewsByCompanyId = (req, res) => {
-  Interview.find({company_id: req.params.id}).sort({created_date: -1})
-    .then(interviews => {
-      if(!interviews) {
+  Interview.find({ company_id: req.params.id })
+    .sort({ created_date: -1 })
+    .then((interviews) => {
+      if (!interviews) {
         return res.status(400).json({
-          msg: "No interview reviews for this company"
-        })
+          msg: "No interview reviews for this company",
+        });
       } else {
-        return res.status(200).json(interviews)
+        return res.status(200).json(interviews);
       }
     })
-    .catch(err => {
+    .catch((err) => {
       return res.status(500).json({
-        msg: "Something went wrong XXX"
-      })
-    })
-}
+        msg: "Something went wrong XXX",
+      });
+    });
+};
 
-module.exports = {getAllInterviews, getInterviewsByCompanyId}
+const AddInterviews = (req, res) => {
+  console.log(req.body);
+  const {
+    user_id,
+    company_id,
+    job_title,
+    interview_date,
+    review,
+    job_offer_flag,
+    difficulty_rating,
+  } = req.body;
+
+  const newInterview = new Interview({
+    user_id,
+    company_id,
+    job_title,
+    interview_date,
+    review,
+    job_offer_flag,
+    difficulty_rating,
+  });
+
+  newInterview.save().then((interview) => {
+    return res.json(interview);
+  });
+};
+
+module.exports = { getAllInterviews, getInterviewsByCompanyId, AddInterviews };
