@@ -4,6 +4,8 @@ var cors = require("cors");
 
 const companyRoutes = require("./routes/companyRoute");
 const interviewRoutes = require("./routes/interviewRoute");
+const critiqueRoute = require("./routes/critiqueRoute");
+const jobRoute = require("./routes/jobRoute");
 
 const app = express();
 mongoose.set("strictQuery", false);
@@ -22,6 +24,8 @@ app.get("/", (req, res) => {
 
 app.use("/api", companyRoutes);
 app.use("/api", interviewRoutes);
+app.use("/api", critiqueRoute);
+app.use("/api", jobRoute);
 
 mongoose.connect(
   `mongodb+srv://${username}:${[
