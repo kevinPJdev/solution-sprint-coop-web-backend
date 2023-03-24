@@ -41,6 +41,7 @@ const AddInterviews = (req, res) => {
     review,
     job_offer_flag,
     difficulty_rating,
+    positive_flag,
   } = req.body;
 
   const newInterview = new Interview({
@@ -51,10 +52,11 @@ const AddInterviews = (req, res) => {
     review,
     job_offer_flag,
     difficulty_rating,
+    positive_flag,
   });
 
   newInterview.save().then((interview) => {
-    return res.json(interview);
+    return res.status(200).json(interview);
   });
 };
 
