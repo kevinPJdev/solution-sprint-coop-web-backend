@@ -1,34 +1,30 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const ReviewSchema = mongoose.Schema({
   desc: {
     type: String,
-    required: true
+    required: true,
   },
-  questions: [String]
-})
+  questions: [String],
+});
 
 const InterviewSchema = mongoose.Schema({
   user_id: String,
   company_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'company'
-  },
-  title: {
-    type:String,
-    required: true,
+    ref: "company",
   },
   job_title: {
     type: String,
-    required: true
+    required: true,
   },
   interview_date: {
     type: Date,
-    required: true
+    required: true,
   },
   review: {
     type: ReviewSchema,
-    required: true
+    required: true,
   },
   positive_flag: {
     type: Boolean,
@@ -37,13 +33,12 @@ const InterviewSchema = mongoose.Schema({
   difficulty_rating: Number,
   created_date: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
   },
   modified_date: {
     type: Date,
-    default: Date.now()
-  }
+    default: Date.now(),
+  },
+});
 
-})
-
-module.exports = interview = mongoose.model('interview', InterviewSchema)
+module.exports = interview = mongoose.model("interview", InterviewSchema);
