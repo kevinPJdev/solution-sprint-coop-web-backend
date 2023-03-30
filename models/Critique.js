@@ -19,6 +19,11 @@ const Critique = mongoose.Schema({
     type: String,
     required: true,
   },
+  job_field: {
+    type: String,
+    enum: ['Computer Science', 'Data Analytics', 'Finance', 'Accounting', 'Mechanical', 'Civil', 'Education', 'Biology', 'Electronics', 'Psycology'],
+    required: true
+  },
   months_length: {
     type: Number,
     required: true,

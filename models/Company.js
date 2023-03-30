@@ -5,6 +5,14 @@ const CompanySchema = mongoose.Schema({
     type: String,
     required: true
   },
+  company_size: {
+    type: String,
+    required: true,
+    enum: ['1 to 100', '100+ to 1000', '1000+ to 5000', '10000+']
+  },
+  company_founded: String,
+  industry: String,
+  company_type: String,
   location: String,
   website: String,
   logo_image_url: String,
