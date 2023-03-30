@@ -29,7 +29,10 @@ const Critique = mongoose.Schema({
   },
   likes: Number,
   dislikes: Number,
-  rating: Number,
+  rating: {
+    type: Number,
+    required: true
+  },
   created_date: {
     type: Date,
     default: Date.now(),

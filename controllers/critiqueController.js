@@ -19,7 +19,8 @@ const getAllCritiques = (req, res) => {
 };
 
 const getCritiquesById = (req, res) => {
-  Critique.find({ company_id: req.params.id }.sort({ created_date: -1 }))
+  Critique.find({ company_id: req.params.id })
+    .sort({ created_date: -1 })
     .then((critiques) => {
       if (!critiques) {
         return res.status(400).json({
