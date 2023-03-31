@@ -36,7 +36,6 @@ const Critique = mongoose.Schema({
   dislikes: Number,
   rating: {
     type: Number,
-    required: true
   },
   created_date: {
     type: Date,

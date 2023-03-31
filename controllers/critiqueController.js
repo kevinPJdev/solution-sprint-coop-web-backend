@@ -38,10 +38,11 @@ const getCritiquesById = (req, res) => {
 };
 
 const AddCritique = (req, res) => {
-  const { user_id, company_id, job_title, months_length, review } = req.body;
+  const { user_id, company_id, job_title, job_field, months_length, review } = req.body;
 
   const newCritique = new Critique({
     user_id,
+    job_field,
     company_id,
     job_title,
     months_length,
